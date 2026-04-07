@@ -1,1 +1,93 @@
+ 
+ Router0 Configuration
+ 
+enable
+configure terminal
+ Configure router interfaces with IPs
+interface GigabitEthernet0/0
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
+exit
 
+interface GigabitEthernet0/1
+ ip address 192.168.20.1 255.255.255.0
+ no shutdown
+exit
+
+interface GigabitEthernet0/2
+ ip address 192.168.30.1 255.255.255.0
+ no shutdown
+exit
+ ACL Configuration
+
+ip access-list extended ADMIN_ICMP
+  deny icmp 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255 echo
+  deny icmp 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255 echo
+  permit icmp any any echo-reply
+  permit ip any any
+exit
+
+ Apply ACL inbound on Library and Lab interfaces
+interface GigabitEthernet0/1
+ ip access-group ADMIN_ICMP in
+exit
+
+interface GigabitEthernet0/2
+ ip access-group ADMIN_ICMP in
+exit
+
+end
+write memory
+
+ PC Configurations
+
+ Admin Block
+PC0:
+ IPv4 Address: 192.168.10.10
+ Subnet Mask: 255.255.255.0
+ Default Gateway: 192.168.10.1
+
+PC1:
+ IPv4 Address: 192.168.10.11
+ Subnet Mask: 255.255.255.0
+ Default Gateway: 192.168.10.1
+
+ Library Block
+PC2:
+ IPv4 Address: 192.168.20.10
+ Subnet Mask: 255.255.255.0
+ Default Gateway: 192.168.20.1
+
+PC3:
+ IPv4 Address: 192.168.20.11
+ Subnet Mask: 255.255.255.0
+ Default Gateway: 192.168.20.1
+
+ Lab Block
+PC4:
+ IPv4 Address: 192.168.30.10
+ Subnet Mask: 255.255.255.0
+ Default Gateway: 192.168.30.1
+
+PC5:
+ IPv4 Address: 192.168.30.11
+ Subnet Mask: 255.255.255.0
+ Default Gateway: 192.168.30.1
+
+TabletPC1 (Wireless):
+ DHCP enabled
+ SSID: lab123
+ WPA2-PSK, AES encryption
+ Passphrase: lab85210
+
+ Verification Commands
+ 
+ From Admin PCs:
+ping 192.168.10.11   -> should succeed
+ping 192.168.20.10   -> should fail (blocked by ACL)
+ping 192.168.30.10   -> should fail (blocked by ACL)
+
+ From Library/Lab PCs:
+ping 192.168.10.10   -> should fail (blocked by ACL)
+ping 192.168.20.11   -> should succeed (same subnet)
+ping 192.168.30.11   -> should succeed (same subnet)
