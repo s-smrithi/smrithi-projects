@@ -1,1 +1,62 @@
+======================
+SWITCH CONFIG
+======================
+enable
+configure terminal
 
+! Create VLANs
+vlan 10
+name HR
+vlan 20
+name SALES
+vlan 30
+name IT
+
+! VLAN 10 ports
+interface range fa0/1-5
+switchport mode access
+switchport access vlan 10
+exit
+! VLAN 20 ports
+interface range fa0/6-10
+switchport mode access
+switchport access vlan 20
+exit
+
+! VLAN 30 ports
+interface range fa0/11-15
+switchport mode access
+switchport access vlan 30
+exit
+! Trunk port to router
+interface gig0/1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30
+no shutdown
+exit
+end
+write memory
+======================
+ROUTER CONFIG
+======================
+enable
+configure terminal
+interface gig0/0
+no shutdown
+! VLAN 10
+interface gig0/0.10
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+exit
+! VLAN 20
+interface gig0/0.20
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+exit
+! VLAN 30
+interface gig0/0.30
+encapsulation dot1Q 30
+ip address 192.168.30.1 255.255.255.0
+exit
+end
+write memory
