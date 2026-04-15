@@ -97,7 +97,7 @@ This project demonstrates how VLANs can be used to **design a secure and efficie
 
 ## 📫 Contact
 - Email: smrithi06.s@gmail.com  
-- GitHub: https://github.com/yourusername  
+- GitHub:https://github.com/s-smrithi
 
 ---
 
