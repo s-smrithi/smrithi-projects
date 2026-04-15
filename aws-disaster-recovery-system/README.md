@@ -80,7 +80,7 @@ This project demonstrates how AWS services can be used to build a **robust disas
 
 ## 📫 Contact
 - Email: smrithi06.s@gmail.com  
-- GitHub: https://github.com/yourusername  
+- GitHub:https://github.com/s-smrithi  
 
 ---
 
