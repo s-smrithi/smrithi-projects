@@ -89,7 +89,7 @@ This project demonstrates how ACLs can be used to **secure a campus network** by
 
 ## 📫 Contact
 - Email: smrithi06.s@gmail.com  
-- GitHub: https://github.com/yourusername  
+- GitHub: https://github.com/s-smrithi  
 
 ---
 
