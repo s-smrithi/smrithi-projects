@@ -75,7 +75,7 @@ This project showcases how AWS services can be integrated to build a **scalable,
 
 ## 📫 Contact
 - Email: smrithi06.s@gmail.com  
-- GitHub: https://github.com/yourusername  
+- GitHub:https://github.com/s-smrithi  
 
 ---
 
