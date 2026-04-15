@@ -73,7 +73,7 @@ To build scalable, secure, and efficient cloud and network solutions while conti
 ## 📫 Contact
 - 📧 Email: smrithi06.s@gmail.com  
 - 💼 LinkedIn: (Add your link)  
-- 💻 GitHub: https://github.com/yourusername  
+- 💻 GitHub:https://github.com/s-smrithi 
 
 ---
 
